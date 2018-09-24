@@ -28,6 +28,11 @@ COPY --from=BUILD /build/dante-${DANTE_VER}/dante_${DANTE_VER}-*.deb ./
 
 RUN dpkg -i *.deb
 
+RUN echo "proxy:proxy" | chpasswd
+
 COPY ./etc/ /etc/
 
 CMD ["/usr/bin/supervisord"]
+
+EXPOSE 1080/tcp
+EXPOSE 1080/udp
