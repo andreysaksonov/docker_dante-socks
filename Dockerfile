@@ -25,13 +25,12 @@ RUN apt update -y
 RUN apt install -y supervisor
 
 COPY --from=BUILD /build/dante-${DANTE_VER}/dante_${DANTE_VER}-*.deb ./tmp/dante_${DANTE_VER}-*.deb
-
 RUN dpkg -i ./tmp/dante_${DANTE_VER}-*.deb
-
-RUN echo "proxy:proxy" | chpasswd
 
 COPY ./etc/ /etc/
 
-ENTRYPOINT ["/usr/bin/supervisord", "--nodaemon"]
+ENTRYPOINT ["/bin/bash", "-c", "echo \"proxy:${PROXY_PASSWORD:-proxy}\" | chpasswd"]
+
+CMD ["/usr/bin/supervisord", "--nodaemon"]
 
 EXPOSE 1080/tcp
