@@ -28,9 +28,9 @@ COPY --from=BUILD /build/dante-${DANTE_VER}/dante_${DANTE_VER}-*.deb ./tmp/dante
 RUN dpkg -i ./tmp/dante_${DANTE_VER}-*.deb
 
 COPY ./etc/ /etc/
+COPY ./docker-entrypoint.sh /
 
-ENTRYPOINT ["/bin/bash", "-c", "echo \"proxy:${PROXY_PASSWORD:-proxy}\" | chpasswd"]
-
-CMD ["/usr/bin/supervisord", "--nodaemon"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 1080/tcp
+EXPOSE 1080/udp
