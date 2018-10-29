@@ -35,4 +35,3 @@ COPY ./etc/ /etc/
 ENTRYPOINT ["/usr/bin/supervisord", "--nodaemon"]
 
 EXPOSE 1080/tcp
-EXPOSE 1080/udp
