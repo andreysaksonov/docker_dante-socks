@@ -1,8 +1,6 @@
 ## docker_dante-socks
 Dante SOCKS Docker Image
 
-[![](https://images.microbadger.com/badges/version/andreysaksonov/dante-socks.svg)](https://microbadger.com/images/andreysaksonov/dante-socks)
-
 [![](https://images.microbadger.com/badges/image/andreysaksonov/dante-socks.svg)](https://microbadger.com/images/andreysaksonov/dante-socks)
 
 ### Run Container
