@@ -4,8 +4,8 @@ FROM ubuntu:xenial as BUILD
 
 ARG DANTE_VER
 
-RUN apt update -y
-RUN apt install -y wget build-essential checkinstall
+RUN apt update -y \
+  && apt install -y wget build-essential checkinstall
 
 WORKDIR /build
 
@@ -21,8 +21,8 @@ FROM ubuntu:xenial
 
 ARG DANTE_VER
 
-RUN apt update -y
-RUN apt install -y supervisor
+RUN apt update -y \
+  && apt install -y supervisor
 
 COPY --from=BUILD /build/dante-${DANTE_VER}/dante_${DANTE_VER}-*.deb ./tmp/dante_${DANTE_VER}-*.deb
 RUN dpkg -i ./tmp/dante_${DANTE_VER}-*.deb
