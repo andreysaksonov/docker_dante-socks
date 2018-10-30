@@ -5,14 +5,13 @@ Dante SOCKS Docker Image
 
 ### Run Container
 1. Download [Docker](https://www.docker.com/community-edition)
-2. `docker pull andreysaksonov/dante-socks`
-3. `docker run -it -p 1080:1080/tcp -p 1080:1080/udp -e PROXY_USER_PASSWORD=proxy_password andreysaksonov/dante-socks`
-4. `curl --proxy socks5://proxy:proxy_password@localhost:1080 https://example.com`
+2. `docker run -it -p 1080:1080/tcp -p 1080:1080/udp -e PROXY_USER_PASSWORD=proxy_password andreysaksonov/dante-socks:1.4.2`
+3. `curl --proxy socks5://proxy:proxy_password@localhost:1080 https://example.com`
 
 ### Custom Config
 * `mkdir -p ./config/dante-socks`
 * `cp ./etc/dante-socks/sockd.conf ./config/dante-socks/`
-* `docker run -d -p 1080:1080/tcp -p 1080:1080/udp -v $(pwd)/config/dante-socks:/etc/dante-socks andreysaksonov/dante-socks`
+* `docker run -d -p 1080:1080/tcp -p 1080:1080/udp -v $(pwd)/config/dante-socks:/etc/dante-socks andreysaksonov/dante-socks:1.4.2`
 
 #### Authors
 * [Andrey Saksonov](https://saksonov.me)
